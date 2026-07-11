@@ -1,0 +1,2 @@
+# Placeholder to create /system dir in boot ramdisk
+# Required for merged_fs_config generation in A16 SetUpInDirAndFsConfig

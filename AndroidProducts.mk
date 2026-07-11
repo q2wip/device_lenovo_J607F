@@ -1,0 +1,14 @@
+#
+# Copyright (C) 2021 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/lineage_J607F.mk
+
+COMMON_LUNCH_CHOICES := \
+    lineage_J607F-trunk_staging-userdebug \
+    lineage_J607F-trunk_staging-eng \
+    lineage_J607F-userdebug \
+    lineage_J607F-eng

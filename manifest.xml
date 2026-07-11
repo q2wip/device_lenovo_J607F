@@ -1,0 +1,44 @@
+<!-- bringup: minimal manifest — only what surfaceflinger + allocator need.
+     All non-core HIDL HALs (audio, bt, camera, wifi, sensors, ims, tether,
+     dsp, vpp, qseecom, trustedui, livedisplay, iop, perf, etc.) removed
+     to prevent timeouts from crashing system_server.
+-->
+<manifest version="5.0" type="device" target-level="5">
+    <hal format="aidl">
+        <name>android.hardware.audio.core</name>
+        <version>4</version>
+        <interface>
+            <name>IModule</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>IModule/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.net.nlinterceptor</name>
+        <interface>
+            <name>IInterceptor</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>IInterceptor/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.gatekeeper</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGatekeeper</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IGatekeeper/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.keymaster</name>
+        <transport>hwbinder</transport>
+        <version>4.1</version>
+        <interface>
+            <name>IKeymasterDevice</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@4.1::IKeymasterDevice/default</fqname>
+    </hal>
+</manifest>
