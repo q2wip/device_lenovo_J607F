@@ -1,9 +1,13 @@
-<!-- bringup: minimal manifest — only what surfaceflinger + allocator need.
-     All non-core HIDL HALs (audio, bt, camera, wifi, sensors, ims, tether,
-     dsp, vpp, qseecom, trustedui, livedisplay, iop, perf, etc.) removed
-     to prevent timeouts from crashing system_server.
+<!--
+    Bringup: minimal manifest — only essential HALs for boot.
+    Non-core HIDL HALs (audio, bt, camera, wifi, sensors, ims, tether,
+    dsp, vpp, qseecom, trustedui, livedisplay, iop, perf, etc.) removed
+    to avoid timeouts crashing system_server.
+    Runtime snapshot reference (Dimension2 A16) uses full 523-line manifest
+    with all HIDL HALs; restore once bringup completes.
 -->
 <manifest version="5.0" type="device" target-level="5">
+    <!-- AIDL HALs -->
     <hal format="aidl">
         <name>android.hardware.audio.core</name>
         <version>4</version>
@@ -21,6 +25,8 @@
         </interface>
         <fqname>IInterceptor/default</fqname>
     </hal>
+
+    <!-- HIDL HALs -->
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
         <transport>hwbinder</transport>
