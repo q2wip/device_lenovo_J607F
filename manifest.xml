@@ -83,6 +83,28 @@
         </interface>
         <fqname>@4.1::IKeymasterDevice/default</fqname>
     </hal>
+    <!-- health: HIDL blocks auto-inclusion of health@2.1-service (passthrough crashes with WriteStringToFd symbol);
+         AIDL health-service.qti handles the actual interface. -->
+    <hal format="hidl">
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
+        <version>2.1</version>
+        <interface>
+            <name>IHealth</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.1::IHealth/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.drm</name>
+        <transport>hwbinder</transport>
+        <version>1.4</version>
+        <interface>
+            <name>IDrmFactory</name>
+            <instance>clearkey</instance>
+        </interface>
+        <fqname>@1.4::IDrmFactory/clearkey</fqname>
+    </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
         <transport>hwbinder</transport>
