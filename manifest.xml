@@ -63,25 +63,6 @@
         </interface>
         <fqname>@1.1::IBootControl/default</fqname>
     </hal>
-    <!-- health: AIDL (health-service.qti) is the primary A16 path.
-         HIDL declaration blocks auto-inclusion of hardware/interfaces/health/2.1/default/
-         fragment, which would build android.hardware.health@2.1-service that crashes
-         because android.hardware.health@2.0-impl-2.1.so (prebuilt) references
-         android::base::WriteStringToFd not in A16 VNDK libbase. -->
-    <hal format="aidl">
-        <name>android.hardware.health</name>
-        <fqname>IHealth/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.health</name>
-        <transport>hwbinder</transport>
-        <version>2.1</version>
-        <interface>
-            <name>IHealth</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.1::IHealth/default</fqname>
-    </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
         <transport>hwbinder</transport>
