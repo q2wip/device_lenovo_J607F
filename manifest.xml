@@ -17,15 +17,6 @@
         </interface>
         <fqname>IModule/default</fqname>
     </hal>
-    <hal format="aidl">
-        <name>android.hardware.net.nlinterceptor</name>
-        <interface>
-            <name>IInterceptor</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>IInterceptor/default</fqname>
-    </hal>
-
     <!-- HIDL HALs -->
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>

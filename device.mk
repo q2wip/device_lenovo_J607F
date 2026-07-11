@@ -332,8 +332,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor_compatibility_matrix.xml \
     system_compatibility_matrix.xml \
-    system_manifest.xml \
-    android.hidl.manager@1.0-java
+    system_manifest.xml
 
 # Legacy VNDK compat for early vendor processes (qseecomd etc.)
 PRODUCT_PACKAGES += \
