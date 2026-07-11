@@ -136,6 +136,9 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 # VINTF: disable manifest enforcement for old vendor HALs (bringup)
 PRODUCT_ENFORCE_VINTF_MANIFEST := false
 
+# Inherit from the LineageOS common BoardConfig
+-include vendor/lineage/config/BoardConfigLineage.mk
+
 # Media
 TARGET_USES_ION := true
 

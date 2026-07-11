@@ -25,6 +25,9 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/lenovo/J607Z/J607Z-vendor.mk)
 
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
+
 # Gapps
 ifeq ($(INCLUDE_GAPPS), true)
 $(call inherit-product-if-exists, vendor/gapps/basic/config.mk)
