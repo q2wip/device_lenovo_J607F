@@ -150,6 +150,7 @@ persist.timed.enable=true
 # USB
 vendor.usb.diag.func.name=diag
 vendor.usb.use_ffs_mtp=0
+vendor.usb.controller=a600000.dwc3
 
 # WiFi
 wifi.aware.interface=wifi-aware0
