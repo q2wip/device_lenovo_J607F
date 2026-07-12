@@ -91,7 +91,12 @@
             <name>IDrmFactory</name>
             <instance>clearkey</instance>
         </interface>
+        <interface>
+            <name>ICryptoFactory</name>
+            <instance>clearkey</instance>
+        </interface>
         <fqname>@1.4::IDrmFactory/clearkey</fqname>
+        <fqname>@1.4::ICryptoFactory/clearkey</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>

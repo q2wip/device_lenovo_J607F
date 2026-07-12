@@ -67,7 +67,8 @@ PRODUCT_PACKAGES_DEBUG += \
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
-    android.hardware.boot@1.1-impl-qti.recovery
+    android.hardware.boot@1.1-impl-qti.recovery \
+    android.hardware.boot@1.1-impl
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -322,7 +323,8 @@ PRODUCT_COPY_FILES += \
 # Health (AIDL)
 PRODUCT_PACKAGES += \
     android.hardware.health-service.qti \
-    android.hardware.health-service.qti_recovery
+    android.hardware.health-service.qti_recovery \
+    android.hardware.health@2.1-impl
 
 # HIDL (shims provided by hardware/lineage/compat/)
 PRODUCT_PACKAGES += \
