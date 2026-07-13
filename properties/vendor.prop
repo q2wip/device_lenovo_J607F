@@ -79,6 +79,25 @@ vendor.display.disable_metadata_dynamic_fps=1
 vendor.display.disable_offline_rotator=1
 vendor.display.qdcm.disable_factory_mode=1
 vendor.display.qdcm.mode_combine=1
+# --- DIAGNOSTIC (revertible): match reference ROM display HAL tuning to avoid
+#     composer HWCSession hang. Reference: runtime_snapshot/09_vendor_build.prop ---
+vendor.display.disable_scaler=0
+vendor.display.disable_excl_rect=0
+vendor.display.disable_excl_rect_partial_fb=1
+vendor.display.comp_mask=0
+vendor.display.enable_posted_start_dyn=1
+vendor.display.enable_optimize_refresh=1
+vendor.display.use_smooth_motion=1
+vendor.display.enable_camera_smooth=1
+vendor.display.enable_allow_idle_fallback=1
+vendor.display.disable_idle_time_video=1
+vendor.display.disable_idle_time_hdr=1
+vendor.display.disable_hw_recovery_dump=1
+ro.surface_flinger.has_wide_color_display=true
+ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+# Force logd -> kmsg so composer ALOGE is visible on serial console / pstore
+ro.logd.kernel=1
 
 # DPM
 persist.vendor.dpmhalservice.enable=1

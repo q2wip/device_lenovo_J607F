@@ -369,6 +369,10 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.qcom.rc
 
+# DIAGNOSTIC (revertible): force composer HAL to start at boot for serial logging
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.display-debug.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.display-debug.rc
+
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \

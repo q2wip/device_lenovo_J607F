@@ -1,0 +1,7 @@
+# DIAGNOSTIC (revertible): force the display composer HAL to start at boot
+# instead of lazily, so a failure during HWCSession init logs early to serial/kmsg
+# (BOARD_KERNEL_CMDLINE already has console=ttyMSM0, androidboot.console=ttyMSM0).
+# Once the composer hang/exit cause is identified, delete this file and its
+# PRODUCT_COPY_FILES entry in device.mk.
+on boot
+    start vendor.qti.hardware.display.composer
