@@ -501,11 +501,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
     android.frameworks.sensorservice@1.0.vendor \
-    # android.hardware.sensors@2.0-service.multihal disabled: A13 prebuilt
-    # binary crashes on A16, causing system_server to block in
-    # SystemSensorManager.nativeCreate → Watchdog kill → boot loop.
-    # TODO: re-enable with working sensors HAL.
-    # android.hardware.sensors@2.0-service.multihal \
+    android.hardware.sensors@2.0-service.multihal \
     libsensorndkbridge
 
 # Servicetracker
