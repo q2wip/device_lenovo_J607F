@@ -509,16 +509,9 @@
         </interface>
         <fqname>@2.1::IGnss/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.sensors</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ISensors</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.0::ISensors/default</fqname>
-    </hal>
+    <!-- sensors@2.0 NOT declared here: vendor module carries
+         vintf_fragments that installs android.hardware.sensors@2.0-multihal.xml
+         to /vendor/etc/vintf/manifest/; declaring it here conflicts. -->
     <hal format="hidl">
         <name>com.qualcomm.qti.dpm.api</name>
         <transport>hwbinder</transport>
