@@ -7,12 +7,9 @@
     Changes from stock: sepolicy version 33.0 → 202504 (A16), + AIDL audio.core
 -->
 <manifest version="5.0" type="device" target-level="5">
-    <!-- AIDL — audio.core for A16 framework compatibility -->
-    <hal format="aidl">
-        <name>android.hardware.audio.core</name>
-        <version>4</version>
-        <fqname>IModule/default</fqname>
-    </hal>
+    <!-- AIDL audio.core@4 removed: A13 vendor audio HAL is HIDL-only,
+         A16 AudioFlinger crashes (SIGSEGV onFirstRef+684) trying to use
+         the AIDL interface when HIDL @6.0 backend is present. -->
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -521,6 +518,16 @@
             <instance>dpmQmiService</instance>
         </interface>
         <fqname>@1.0::IdpmQmi/dpmQmiService</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.ims.callinfo</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IService</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IService/default</fqname>
     </hal>
     <sepolicy>
         <version>202504</version>
