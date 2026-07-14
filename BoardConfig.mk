@@ -58,7 +58,7 @@ TARGET_NO_BOOTLOADER := true
 
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION:= 2
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 earlycon=msm_geni_serial,0x888000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket loop.max_part=7 androidboot.selinux=permissive initcall_debug log_buf_len=8M kpti=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 earlycon=msm_geni_serial,0x888000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket loop.max_part=7 androidboot.selinux=permissive androidboot.debuggable=1 androidboot.adb.secure=0 initcall_debug log_buf_len=8M kpti=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
@@ -185,9 +185,10 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 
-# Build dtb.img from kernel DTB output (not stale prebuilt)
+# Build dtb.img from kernel DTB output — only include lagoon.dtb
+# (arnoz.dtb is compiled as arnoz-overlay.dtbo base, NOT as boot DTB)
 $(PRODUCT_OUT)/dtb.img: $(PRODUCT_OUT)/kernel
-	cat $(PRODUCT_OUT)/obj/KERNEL_OBJ/arch/arm64/boot/dts/vendor/qcom/*.dtb > $@
+	cat $(PRODUCT_OUT)/obj/KERNEL_OBJ/arch/arm64/boot/dts/vendor/qcom/lagoon.dtb > $@
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.emmc
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_USERIMAGES_USE_EXT4 := true
