@@ -509,7 +509,7 @@
         </interface>
         <fqname>@2.1::IGnss/default</fqname>
     </hal>
-    <!-- sensors@2.0 declared via vintf_fragments from @2.0-service.mock module -->
+    <!-- sensors@2.0 declared via vintf_fragments from @2.0-service.multihal module -->
     <hal format="hidl">
         <name>com.qualcomm.qti.dpm.api</name>
         <transport>hwbinder</transport>
