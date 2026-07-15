@@ -16,6 +16,10 @@ $(call inherit-product, device/lenovo/J607F/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_tablet_wifionly.mk)
 
+# Build with the full list of languages (default locales + en_XC pseudo-locale
+# which makes the build package every available locale resource).
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
 # Enable 2-Pane Layout
 PRODUCT_PACKAGES += \
     androidx.window.extensions
