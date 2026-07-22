@@ -187,7 +187,6 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.3-impl \
     audio.bluetooth.default \
     audio.primary.lito \
-    audio_amplifier.lito \
     audio.r_submix.default \
     audioadsprpcd \
     audio.usb.default \
