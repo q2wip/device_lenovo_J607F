@@ -263,8 +263,11 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
-# USB — use A13 prebuilt (HIDL), source-built AIDL crashes
-# Component overrides
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb-service.qti \
+    android.hardware.usb.gadget-service.qti
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
