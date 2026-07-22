@@ -69,3 +69,6 @@ lockscreen.rot_override=true
 debug.renderengine.backend=skiaglthreaded
 debug.hwui.renderer=skiagl
 renderthread.skia.reduceopstasksplitting=true
+
+# USB default configuration for debug build
+persist.sys.usb.config=mtp,adb
