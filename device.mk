@@ -187,6 +187,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.3-impl \
     audio.bluetooth.default \
     audio.primary.lito \
+    audio_amplifier.lito \
     audio.r_submix.default \
     audioadsprpcd \
     audio.usb.default \
@@ -207,6 +208,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libreverbwrapper \
     libsndmonitor \
+    libspkrprot \
     libtinycompress \
     libvisualizer \
     libvolumelistener
@@ -551,13 +553,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vibrator/etc/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
-# WiFi
+# WiFi (AIDL source-built, matching FP4/gauguin)
 PRODUCT_PACKAGES += \
+    android.hardware.wifi-service \
     hostapd \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
-    libwifi-system-iface \
-    libwifi-system-iface.vendor \
     libwpa_client \
     vendor.qti.hardware.wifi.hostapd@1.2.vendor \
     vendor.qti.hardware.wifi.supplicant@2.2.vendor \
