@@ -67,6 +67,10 @@ on late-fs
     exec_start wait_for_keymaster
     mount_all --late
 
+# Debug: copy crash tombstones to /sdcard/ after each boot
+on property:sys.boot_completed=1
+    exec u:r:init:s0 -- /system/bin/sh /vendor/bin/tombstone_copy.sh
+
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
 
