@@ -30,6 +30,7 @@
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules adsp_loader_dlkm apr_dlkm bolero_cdc_dlkm cirrus_cs35l41_dlkm cirrus_wm_adsp_dlkm hdmi_dlkm lcd llcc_perfmon machine_dlkm mbhc_dlkm mpq-adapter mpq-dmx-hw-plugin native_dlkm pinctrl_lpi_dlkm platform_dlkm q6_dlkm q6_notifier_dlkm q6_pdr_dlkm rdbg rmnet_perf rmnet_shs rx_macro_dlkm snd_event_dlkm stub_dlkm swr_ctrl_dlkm swr_dlkm tx_macro_dlkm usf_dlkm va_macro_dlkm wcd937x_dlkm wcd937x_slave_dlkm wcd938x_dlkm wcd938x_slave_dlkm wcd9xxx_dlkm wcd_core_dlkm wsa881x_dlkm wsa883x_dlkm wsa_macro_dlkm 
     write /proc/sys/kernel/sched_boost 1
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qti.early_init.sh
 
 on init
     # A16: schedtune removed, cgroup v1 stune not available
@@ -90,6 +91,8 @@ on boot
     setprop vendor.usb.qdss.inst.name "qdss_mdm"
     setprop vendor.usb.controller a600000.dwc3
 # WLAN driver is built-in (CONFIG_QCA_CLD_WLAN=y), no module to load
+# Default USB config for debug build if not already set
+    setprop persist.sys.usb.config mtp,adb
 #add sarsensor by lct
 	chmod 0666 sys/class/capsense/enable
 	chmod 0666 sys/bus/i2c/devices/1-0020/sar_calibration
