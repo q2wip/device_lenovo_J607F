@@ -89,8 +89,7 @@ on boot
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop vendor.usb.qdss.inst.name "qdss_mdm"
     setprop vendor.usb.controller a600000.dwc3
-#Load WLAN driver
-    insmod /vendor/lib/modules/qca_cld3_wlan.ko
+# WLAN driver is built-in (CONFIG_QCA_CLD_WLAN=y), no module to load
 #add sarsensor by lct
 	chmod 0666 sys/class/capsense/enable
 	chmod 0666 sys/bus/i2c/devices/1-0020/sar_calibration
