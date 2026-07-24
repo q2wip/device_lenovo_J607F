@@ -178,6 +178,9 @@ TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 
+# Firmware symlink for PIL/adsp firmware loading
+BOARD_ROOT_EXTRA_SYMLINKS := /vendor/firmware_mnt:/firmware /vendor/bt_firmware:/bt_firmware /vendor/dsp:/dsp
+
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
