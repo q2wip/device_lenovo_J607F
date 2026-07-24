@@ -265,11 +265,11 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # USB (AIDL from vendor/qcom/opensource/usb — matching FP4/gauguin)
-PRODUCT_HAS_GADGET_HAL := true
+# Note: gadget-service.qti removed — it sets sys.usb.configfs=2 which blocks
+# init script composition triggers (they wait for configfs=1). Keep IUsb for
+# Settings UI; let init.qcom.usb.rc manage the gadget.
 PRODUCT_PACKAGES += \
-    android.hardware.usb-service.qti \
-    android.hardware.usb.gadget-service.qti \
-    usb_compositions.conf
+    android.hardware.usb-service.qti
 
 PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
