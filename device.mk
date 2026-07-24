@@ -265,6 +265,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # USB (AIDL from vendor/qcom/opensource/usb — matching FP4/gauguin)
+PRODUCT_HAS_GADGET_HAL := true
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.qti \
     android.hardware.usb.gadget-service.qti \
