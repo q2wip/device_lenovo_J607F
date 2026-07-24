@@ -97,8 +97,6 @@ on boot
 # WLAN driver is built-in (CONFIG_QCA_CLD_WLAN=y), no module to load
 # Default USB config for debug build if not already set
     setprop persist.sys.usb.config mtp,adb
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config mtp,adb
 #add sarsensor by lct
 	chmod 0666 sys/class/capsense/enable
 	chmod 0666 sys/bus/i2c/devices/1-0020/sar_calibration

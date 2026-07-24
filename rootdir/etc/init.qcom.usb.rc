@@ -112,14 +112,14 @@ on boot
     exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qcom.usb.sh
     write /config/usb_gadget/g1/strings/0x409/product ${vendor.usb.product_string}
     write /config/usb_gadget/g2/strings/0x409/product ${vendor.usb.product_string}
-    # Set sys.usb.controller directly from kernel cmdline (ro.boot.usbcontroller)
-    # and enable configfs before setting sys.usb.config, so that Qualcomm USB
-    # composition property triggers fire immediately. Otherwise vendor.usb.controller
-    # from init.target.rc (runs later) sets sys.usb.configfs=1 too late; the
-    # property trigger system won't re-evaluate already-set sys.usb.config.
-    setprop sys.usb.controller ${ro.boot.usbcontroller}
+    # Defer sys.usb.controller/configfs/config to property triggers so
+    # composition setup happens after APEX activation and functionfs is ready.
+    # vendor.usb.controller from init.target.rc triggers this via
+    # on property:vendor.usb.controller=* below.
+
+on property:vendor.usb.controller=*
+    setprop sys.usb.controller ${vendor.usb.controller}
     setprop sys.usb.configfs 1
-    setprop sys.usb.config ${persist.vendor.usb.config}
 
 on boot && property:vendor.usb.use_ffs_mtp=1
    mkdir /config/usb_gadget/g1/functions/ffs.mtp
@@ -1657,11 +1657,6 @@ on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g1/functions/mtp.gs0 /config/usb_gadget/g1/configs/b.1/f1
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     start adbd
-    write /dev/kmsg "init_usb: started adbd, waiting 3s for functionfs\n"
-    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/sh -c "sleep 3"
-    write /dev/kmsg "init_usb: executing write UDC\n"
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-    setprop sys.usb.state ${sys.usb.config}
 
 
 on property:sys.usb.config=ptp && property:sys.usb.configfs=1
