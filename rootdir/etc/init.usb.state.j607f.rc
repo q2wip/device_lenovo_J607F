@@ -1,0 +1,9 @@
+# Supplementary USB state feedback for configfs=2 (gadget HAL) mode.
+# The build system's init.qcom.usb.rc sets vendor.usb.config and starts
+# usbd on sys.usb.config change with configfs=2, but does not set
+# sys.usb.state. The framework waits for sys.usb.state to match
+# sys.usb.config to complete the state transition. This file provides
+# that missing feedback loop.
+
+on property:sys.usb.config=* && property:sys.usb.configfs=2
+    setprop sys.usb.state ${sys.usb.config}
