@@ -47,7 +47,7 @@ on init
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     start vendor.qseecomd
-    start vendor.keymaster-4-0
+    start keymaster-4-0
 
 on early-fs
     start vold
