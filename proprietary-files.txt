@@ -154,7 +154,6 @@
 156:vendor/lib/libaudioconfigstore.so
 157:vendor/lib/libaudioparsers.so
 158:vendor/lib/libbluetooth_audio_session.so
-159:vendor/lib/libbluetooth_audio_session_aidl.so
 160:vendor/lib/libbluetooth_audio_session_qti.so
 161:vendor/lib/libbluetooth_audio_session_qti_2_1.so
 162:vendor/lib/libsndmonitor.so
@@ -187,7 +186,6 @@
 191:vendor/lib64/libaudioconfigstore.so
 192:vendor/lib64/libaudioparsers.so
 193:vendor/lib64/libbluetooth_audio_session.so
-194:vendor/lib64/libbluetooth_audio_session_aidl.so
 195:vendor/lib64/libbluetooth_audio_session_qti.so
 196:vendor/lib64/libbluetooth_audio_session_qti_2_1.so
 197:vendor/lib64/libsndmonitor.so
