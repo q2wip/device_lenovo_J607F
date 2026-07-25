@@ -112,16 +112,12 @@ on boot
     exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qcom.usb.sh
     write /config/usb_gadget/g1/strings/0x409/product ${vendor.usb.product_string}
     write /config/usb_gadget/g2/strings/0x409/product ${vendor.usb.product_string}
-    # When USE_GADGET_HAL=1, set sys.usb.configfs=2 at boot so the framework
-    # knows the HAL manages configfs. The composition triggers (configfs=1)
-    # are skipped and the gadget HAL handles everything.
-    # When USE_GADGET_HAL=0, defer sys.usb.controller/configfs to property
-    # triggers so composition setup happens after APEX/functionfs is ready.
+    # Defer sys.usb.controller/configfs/config to property triggers so
+    # composition setup happens after APEX activation and functionfs is ready.
+    # vendor.usb.controller from init.target.rc triggers this via
+    # on property:vendor.usb.controller=* below.
 
-on boot && property:vendor.usb.use_gadget_hal=1
-    setprop sys.usb.configfs 2
-
-on property:vendor.usb.controller=* && property:vendor.usb.use_gadget_hal=0
+on property:vendor.usb.controller=*
     setprop sys.usb.controller ${vendor.usb.controller}
     setprop sys.usb.configfs 1
 
@@ -133,13 +129,14 @@ on boot && property:vendor.usb.use_ffs_mtp=1
    mkdir /dev/usb-ffs/ptp 0770 mtp mtp
    mount functionfs ptp /dev/usb-ffs/ptp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
 
-on property:sys.usb.config=* && property:sys.usb.configfs=2
-    setprop sys.usb.state ${sys.usb.config}
+on property:vendor.usb.controller=*
+   setprop sys.usb.controller ${vendor.usb.controller}
+   setprop sys.usb.configfs 1
 
 on property:persist.vendor.usb.config=*
     setprop persist.sys.usb.config ${persist.vendor.usb.config}
 
-on boot && property:ro.boot.usbconfigfs=true && property:vendor.usb.use_gadget_hal=0
+on boot && property:ro.boot.usbconfigfs=true
         setprop sys.usb.configfs 1
 
 #
