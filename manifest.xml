@@ -50,11 +50,7 @@
         </interface>
         <fqname>@1.0::IBluetoothHci/default</fqname>
     </hal>
-    <!-- WiFi HAL is AIDL (android.hardware.wifi-service), declared via VINTF fragment
-         camera.provider@2.4 disabled: A13 prebuilt crashes on A16,
-         and J607F is a tablet without camera hardware anyway. Causes
-         system_server main thread to block in CameraManager →
-         Watchdog kill → boot loop. TODO: re-enable with working HAL.
+    <!-- WiFi HAL is AIDL (android.hardware.wifi-service), declared via VINTF fragment -->
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
         <transport>hwbinder</transport>
@@ -64,7 +60,7 @@
             <instance>legacy/0</instance>
         </interface>
         <fqname>@2.4::ICameraProvider/legacy/0</fqname>
-    </hal> -->
+    </hal>
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
         <transport>hwbinder</transport>
