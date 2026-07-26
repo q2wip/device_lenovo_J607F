@@ -65,7 +65,12 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 TARGET_KERNEL_ADDITIONAL_FLAGS := KCFLAGS="-Wno-error=strict-prototypes"
-TARGET_KERNEL_ADDITIONAL_FLAGS += DTC_EXT=/usr/bin/dtc
+
+# Use system DTC 1.7.2 instead of AOSP-built DTC 1.7.0 which corrupts
+# cell/byte-array property values (e.g. <3296000 3296000> → 6 bytes).
+# Passed as 'DTC=' (command-line) so it overrides Makefile.lib's
+# 'DTC = $(DTC_EXT)' (file-level assignment).
+TARGET_KERNEL_ADDITIONAL_FLAGS += DTC=/usr/bin/dtc
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/lenovo/J607Z
