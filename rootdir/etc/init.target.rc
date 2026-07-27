@@ -30,17 +30,6 @@
 import /vendor/etc/init/hw/init.usb.state.j607f.rc
 
 on early-init
-    # Audio modules loaded in dependency order:
-    # snd_event → q6_pdr → q6_notifier → apr → q6 → adsp_loader
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules snd_event_dlkm q6_pdr_dlkm q6_notifier_dlkm apr_dlkm q6_dlkm adsp_loader_dlkm
-    # swr → swr_ctrl → bolero → va_macro (va must probe before rx/tx)
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules swr_dlkm swr_ctrl_dlkm bolero_cdc_dlkm va_macro_dlkm
-    # rx + tx macros (depend on va_macro being registered)
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules rx_macro_dlkm tx_macro_dlkm wsa_macro_dlkm
-    # codec + machine driver
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules wcd_core_dlkm wcd9xxx_dlkm mbhc_dlkm wcd937x_slave_dlkm wcd937x_dlkm machine_dlkm
-    # Non-audio and disabled modules
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules cirrus_cs35l41_dlkm cirrus_wm_adsp_dlkm hdmi_dlkm lcd llcc_perfmon mpq-adapter mpq-dmx-hw-plugin rdbg rmnet_perf rmnet_shs wcd938x_dlkm wcd938x_slave_dlkm native_dlkm platform_dlkm pinctrl_lpi_dlkm stub_dlkm usf_dlkm wsa881x_dlkm wsa883x_dlkm 
     write /proc/sys/kernel/sched_boost 1
     exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qti.early_init.sh
 
