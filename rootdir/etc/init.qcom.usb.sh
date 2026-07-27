@@ -47,7 +47,11 @@ target=`getprop ro.board.platform`
 # Override USB default composition
 #
 # If USB persist config not set, set default configuration
-if [ "$(getprop ro.build.type)" != "user" ] && [ "$(getprop persist.vendor.usb.config)" == "" ]; then
+# When vendor.usb.use_gadget_hal=1, the HAL manages configfs and
+# only handles standard Android functions (mtp,adb) - skip QTI composition.
+if [ "$(getprop vendor.usb.use_gadget_hal)" == "1" ]; then
+    : # HAL mode - skip QTI composition
+elif [ "$(getprop ro.build.type)" != "user" ] && [ "$(getprop persist.vendor.usb.config)" == "" ]; then
     if [ "$esoc_name" != "" ]; then
 	  setprop persist.vendor.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb
     else
