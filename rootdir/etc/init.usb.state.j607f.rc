@@ -1,10 +1,6 @@
 # Supplementary USB state feedback for configfs=2 (gadget HAL) mode.
 # Mirrors sys.usb.config to sys.usb.state so the framework's
 # waitForState() can complete without 1s timeout.
-#
-# Only triggers on explicit property changes (framework setUsbConfig),
-# not on initial boot — the framework handles the initial config
-# sequence via setEnabledFunctions.
 
-on property:sys.usb.config=* && property:sys.usb.configfs=2 && property:sys.boot_completed=1
+on property:sys.usb.config=* && property:sys.usb.configfs=2
     setprop sys.usb.state ${sys.usb.config}
