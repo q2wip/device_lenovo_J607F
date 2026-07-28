@@ -28,6 +28,7 @@
 #
 
 
+import /vendor/etc/init/hw/init.usb.state.j607f.rc
 
 on early-init
     write /proc/sys/kernel/sched_boost 1
