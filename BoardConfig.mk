@@ -91,19 +91,42 @@ AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
 AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := true
 AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
 AUDIO_FEATURE_ENABLED_SSR := true
-AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
-AUDIO_FEATURE_ENABLED_AHAL_EXT := false
 AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
-AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
-AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
-AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 AUDIO_FEATURE_ENABLED_HDMI_SPK := true
 AUDIO_FEATURE_ENABLED_INSTANCE_ID := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 BOARD_USES_ALSA_AUDIO := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
-USE_CUSTOM_AUDIO_POLICY := 1
-USE_XML_AUDIO_POLICY_CONF := 1
+
+# Kernel modules — Audio DLKM aliases for modprobe compatibility
+TARGET_MODULE_ALIASES += \
+    adsp_loader_dlkm.ko:audio_adsp_loader.ko \
+    apr_dlkm.ko:audio_apr.ko \
+    bolero_cdc_dlkm.ko:audio_bolero_cdc.ko \
+    hdmi_dlkm.ko:audio_hdmi.ko \
+    machine_dlkm.ko:audio_machine_lito.ko \
+    mbhc_dlkm.ko:audio_mbhc.ko \
+    native_dlkm.ko:audio_native.ko \
+    pinctrl_lpi_dlkm.ko:audio_pinctrl_lpi.ko \
+    platform_dlkm.ko:audio_platform.ko \
+    q6_dlkm.ko:audio_q6.ko \
+    q6_notifier_dlkm.ko:audio_q6_notifier.ko \
+    q6_pdr_dlkm.ko:audio_q6_pdr.ko \
+    rx_macro_dlkm.ko:audio_rx_macro.ko \
+    snd_event_dlkm.ko:audio_snd_event.ko \
+    stub_dlkm.ko:audio_stub.ko \
+    swr_ctrl_dlkm.ko:audio_swr_ctrl.ko \
+    swr_dlkm.ko:audio_swr.ko \
+    tx_macro_dlkm.ko:audio_tx_macro.ko \
+    usf_dlkm.ko:audio_usf.ko \
+    va_macro_dlkm.ko:audio_va_macro.ko \
+    wcd938x_dlkm.ko:audio_wcd938x.ko \
+    wcd938x_slave_dlkm.ko:audio_wcd938x_slave.ko \
+    wcd9xxx_dlkm.ko:audio_wcd9xxx.ko \
+    wcd_core_dlkm.ko:audio_wcd_core.ko \
+    wsa881x_dlkm.ko:audio_wsa881x.ko \
+    wsa883x_dlkm.ko:audio_wsa883x.ko \
+    wsa_macro_dlkm.ko:audio_wsa_macro.ko
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
@@ -198,8 +221,7 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 
-# Build dtb.img from kernel DTB output — only include lagoon.dtb
-# (arnoz.dtb is compiled as arnoz-overlay.dtbo base, NOT as boot DTB)
+# Build dtb.img from kernel DTB output — lagoon.dtb works for bootloader
 $(PRODUCT_OUT)/dtb.img: $(PRODUCT_OUT)/kernel
 	cat $(PRODUCT_OUT)/obj/KERNEL_OBJ/arch/arm64/boot/dts/vendor/qcom/lagoon.dtb > $@
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.emmc

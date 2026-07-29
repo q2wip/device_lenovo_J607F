@@ -62,11 +62,12 @@ on early-init
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
     # Load audio modules in dependency order
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules snd_event_dlkm q6_pdr_dlkm q6_notifier_dlkm apr_dlkm q6_dlkm adsp_loader_dlkm
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules swr_dlkm swr_ctrl_dlkm bolero_cdc_dlkm va_macro_dlkm
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules rx_macro_dlkm tx_macro_dlkm wsa_macro_dlkm
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules wcd_core_dlkm wcd9xxx_dlkm mbhc_dlkm machine_dlkm
-    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules wcd938x_dlkm wcd938x_slave_dlkm wsa881x_dlkm wsa883x_dlkm native_dlkm platform_dlkm pinctrl_lpi_dlkm stub_dlkm usf_dlkm hdmi_dlkm lcd llcc_perfmon mpq-adapter mpq-dmx-hw-plugin rdbg rmnet_perf rmnet_shs cs35l41_dlkm
+    # NOTE: module names MUST match modules.dep (audio_xxx prefix, not _dlkm suffix)
+    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules audio_snd_event audio_q6_pdr audio_q6_notifier audio_apr audio_q6 audio_adsp_loader
+    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules audio_swr audio_swr_ctrl audio_bolero_cdc audio_va_macro
+    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules audio_rx_macro audio_tx_macro audio_wsa_macro
+    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules audio_wcd_core audio_wcd9xxx audio_mbhc audio_machine_lito
+    exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe -a -d /vendor/lib/modules audio_wcd938x audio_wcd938x_slave audio_wsa881x audio_wsa883x audio_native audio_platform audio_pinctrl_lpi audio_stub audio_usf audio_hdmi lcd llcc_perfmon mpq-adapter mpq-dmx-hw-plugin rdbg rmnet_perf rmnet_shs cs35l41_dlkm
     # Load WIGIG platform driver
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules msm_11ad_proxy
 
