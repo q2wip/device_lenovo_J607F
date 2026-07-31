@@ -673,6 +673,10 @@
         <path name="deep-buffer-playback" />
     </path>
 
+    <path name="deep-buffer-playback TERT_MI2S_RX">
+        <path name="deep-buffer-playback" />
+    </path>
+
     <path name="deep-buffer-playback display-port">
         <ctl name="DISPLAY_PORT Mixer MultiMedia1" value="1" />
     </path>
@@ -788,6 +792,10 @@
     </path>
 
     <path name="low-latency-playback speaker-safe">
+        <path name="low-latency-playback" />
+    </path>
+
+    <path name="low-latency-playback TERT_MI2S_RX">
         <path name="low-latency-playback" />
     </path>
 
@@ -1029,6 +1037,10 @@
     </path>
 
     <path name="compress-offload-playback speaker-safe">
+        <path name="compress-offload-playback" />
+    </path>
+
+    <path name="compress-offload-playback TERT_MI2S_RX">
         <path name="compress-offload-playback" />
     </path>
 
