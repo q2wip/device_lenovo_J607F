@@ -98,7 +98,12 @@ on boot
     setprop vendor.usb.controller a600000.dwc3
 # WLAN driver is built-in (CONFIG_QCA_CLD_WLAN=y), no module to load
 # Default USB config for debug build if not already set
-    setprop persist.sys.usb.config mtp,adb
+# "adb" (not "mtp,adb"): AOSP init.usb.rc mirrors persist.sys.usb.config to
+# sys.usb.config at boot, and the configfs=2 usbd chain (init.qcom.usb.rc)
+# only starts adbd when persist.sys.usb.config is exactly "adb"
+# (usbd.cpp:47-51). "mtp,adb" left adbd unstarted -> waitForPullUp timeout
+# until the user toggled the ADB switch (framework then sets "adb").
+    setprop persist.sys.usb.config adb
 #add sarsensor by lct
 	chmod 0666 sys/class/capsense/enable
 	chmod 0666 sys/bus/i2c/devices/1-0020/sar_calibration
