@@ -2789,22 +2789,22 @@
     <path name="speaker">	
 	<ctl name="TERT_MI2S_RX Channels" value="Two" />
 	<ctl name="SPK1 PCM Source" value="DSP" />
-    	<ctl name="SPK1 AMP PCM Gain" value="17" />
+    	<ctl name="SPK1 AMP PCM Gain" value="20" />
 	<ctl name="SPK1 Fast Use Case Delta File" value="spk1_fast_switch1.txt" />
 	<ctl name="SPK1 Fast Use Case Switch Enable" value="1" />
 	<ctl name="SPK1 AMP Enable Switch" value="1" />
 	<ctl name="SPK2 PCM Source" value="DSP" />
-	<ctl name="SPK2 AMP PCM Gain" value="17" />
+	<ctl name="SPK2 AMP PCM Gain" value="20" />
 	<ctl name="SPK2 Fast Use Case Delta File" value="spk2_fast_switch1.txt" />
 	<ctl name="SPK2 Fast Use Case Switch Enable" value="1" />
 	<ctl name="SPK2 AMP Enable Switch" value="1" />
 	<ctl name="SPK3 PCM Source" value="DSP" />
-	<ctl name="SPK3 AMP PCM Gain" value="17" />
+	<ctl name="SPK3 AMP PCM Gain" value="20" />
 	<ctl name="SPK3 Fast Use Case Delta File" value="spk3_fast_switch1.txt" />
 	<ctl name="SPK3 Fast Use Case Switch Enable" value="1" />
 	<ctl name="SPK3 AMP Enable Switch" value="1" />
 	<ctl name="SPK4 PCM Source" value="DSP" />
-	<ctl name="SPK4 AMP PCM Gain" value="17" />	
+	<ctl name="SPK4 AMP PCM Gain" value="20" />	
 	<ctl name="SPK4 Fast Use Case Delta File" value="spk4_fast_switch1.txt" />
 	<ctl name="SPK4 Fast Use Case Switch Enable" value="1" />
 	<ctl name="SPK4 AMP Enable Switch" value="1" />
@@ -2970,22 +2970,22 @@
     <path name="handset">
 	 <ctl name="TERT_MI2S_RX Channels" value="Two" />
 	 <ctl name="SPK1 PCM Source" value="DSP" />
-     	 <ctl name="SPK1 AMP PCM Gain" value="17" />
+     	 <ctl name="SPK1 AMP PCM Gain" value="20" />
 	 <ctl name="SPK1 Fast Use Case Delta File" value="spk1_fast_switch3.txt" />
 	 <ctl name="SPK1 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK1 AMP Enable Switch" value="1" />
 	 <ctl name="SPK2 PCM Source" value="DSP" />
-	 <ctl name="SPK2 AMP PCM Gain" value="17" />
+	 <ctl name="SPK2 AMP PCM Gain" value="20" />
 	 <ctl name="SPK2 Fast Use Case Delta File" value="spk2_fast_switch3.txt" />
 	 <ctl name="SPK2 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK2 AMP Enable Switch" value="1" />
 	 <ctl name="SPK3 PCM Source" value="DSP" />
-	 <ctl name="SPK3 AMP PCM Gain" value="17" />
+	 <ctl name="SPK3 AMP PCM Gain" value="20" />
 	 <ctl name="SPK3 Fast Use Case Delta File" value="spk3_fast_switch3.txt" />
 	 <ctl name="SPK3 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK3 AMP Enable Switch" value="1" />
 	 <ctl name="SPK4 PCM Source" value="DSP" />
-	 <ctl name="SPK4 AMP PCM Gain" value="17" />	
+	 <ctl name="SPK4 AMP PCM Gain" value="20" />	
 	 <ctl name="SPK4 Fast Use Case Delta File" value="spk4_fast_switch3.txt" />
 	 <ctl name="SPK4 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK4 AMP Enable Switch" value="1" />
@@ -3066,22 +3066,22 @@
     <path name="voice-speaker-stereo">
      <ctl name="TERT_MI2S_RX Channels" value="Two" />
 	 <ctl name="SPK1 PCM Source" value="DSP" />
-    	 <ctl name="SPK1 AMP PCM Gain" value="17" />
+    	 <ctl name="SPK1 AMP PCM Gain" value="20" />
 	 <ctl name="SPK1 Fast Use Case Delta File" value="spk1_fast_switch3.txt" />
 	 <ctl name="SPK1 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK1 AMP Enable Switch" value="1" />
 	 <ctl name="SPK2 PCM Source" value="DSP" />
-	 <ctl name="SPK2 AMP PCM Gain" value="17" />
+	 <ctl name="SPK2 AMP PCM Gain" value="20" />
 	 <ctl name="SPK2 Fast Use Case Delta File" value="spk2_fast_switch3.txt" />
 	 <ctl name="SPK2 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK2 AMP Enable Switch" value="1" />
 	 <ctl name="SPK3 PCM Source" value="DSP" />
-	 <ctl name="SPK3 AMP PCM Gain" value="17" />
+	 <ctl name="SPK3 AMP PCM Gain" value="20" />
 	 <ctl name="SPK3 Fast Use Case Delta File" value="spk3_fast_switch3.txt" />
 	 <ctl name="SPK3 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK3 AMP Enable Switch" value="1" />
 	 <ctl name="SPK4 PCM Source" value="DSP" />
-	 <ctl name="SPK4 AMP PCM Gain" value="17" />	
+	 <ctl name="SPK4 AMP PCM Gain" value="20" />	
 	 <ctl name="SPK4 Fast Use Case Delta File" value="spk4_fast_switch3.txt" />
 	 <ctl name="SPK4 Fast Use Case Switch Enable" value="1" />
 	 <ctl name="SPK4 AMP Enable Switch" value="1" />
