@@ -119,6 +119,12 @@ on boot
 on boot && property:vendor.usb.use_gadget_hal=1
     setprop sys.usb.configfs 2
 
+on property:sys.usb.config=* && property:sys.usb.configfs=2
+    setprop vendor.usb.config ${sys.usb.config}
+
+on property:vendor.usb.config=* && property:sys.usb.configfs=2
+    start usbd
+
 on property:vendor.usb.controller=* && property:vendor.usb.use_gadget_hal=0
     setprop sys.usb.controller ${vendor.usb.controller}
     setprop sys.usb.configfs 1
