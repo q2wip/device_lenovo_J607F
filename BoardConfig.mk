@@ -120,8 +120,8 @@ TARGET_MODULE_ALIASES += \
     tx_macro_dlkm.ko:audio_tx_macro.ko \
     usf_dlkm.ko:audio_usf.ko \
     va_macro_dlkm.ko:audio_va_macro.ko \
-    wcd938x_dlkm.ko:audio_wcd938x.ko \
-    wcd938x_slave_dlkm.ko:audio_wcd938x_slave.ko \
+    wcd937x_dlkm.ko:audio_wcd937x.ko \
+    wcd937x_slave_dlkm.ko:audio_wcd937x_slave.ko \
     wcd9xxx_dlkm.ko:audio_wcd9xxx.ko \
     wcd_core_dlkm.ko:audio_wcd_core.ko \
     wsa881x_dlkm.ko:audio_wsa881x.ko \
