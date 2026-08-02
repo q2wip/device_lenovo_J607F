@@ -234,7 +234,7 @@
 
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-    <bool name="config_automatic_brightness_available">false</bool>
+    <bool name="config_automatic_brightness_available">true</bool>
 
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">false</bool>
@@ -404,5 +404,8 @@
     <string-array name="config_biometric_sensors" translatable="false" >
           <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
+
+    <!-- himax touchscreen supports smart wakeup (HX_SMART_WAKEUP, double tap gesture) -->
+    <bool name="config_supportDoubleTapWake">true</bool>
 
 </resources>
