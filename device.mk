@@ -64,11 +64,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
-# Boot control
+# Boot control (AIDL, matching FP4)
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-impl
+    android.hardware.boot-service.qti.recovery
+
+$(call soong_config_set_bool,QTI_GPT_UTILS,USE_BSG_FRAMEWORK,false)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -251,7 +252,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     liba2dpoffload \
     android.hardware.bluetooth@1.0.vendor \
-    android.hardware.bluetooth.audio@2.1-impl \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
@@ -285,8 +285,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
+    vendor.qti.hardware.memtrack-service \
     libdisplayconfig.qti \
     libqdMetaData \
     libqdMetaData.system \
@@ -307,9 +306,9 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@4.0.vendor \
     vendor.qti.hardware.display.mapperextensions@1.1.vendor
 
-# DRM
+# DRM (AIDL clearkey, matching FP4; widevine stays HIDL vendor blob)
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor
+    android.hardware.drm-service.clearkey
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -512,11 +511,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/wfdvndservice.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/wfdvndservice.policy \
     $(LOCAL_PATH)/seccomp/wifidisplayhalservice.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/wifidisplayhalservice.policy
 
-# Sensors
+# Sensors (AIDL multihal, matching FP4)
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
     android.frameworks.sensorservice@1.0.vendor \
-    android.hardware.sensors@2.0-service.multihal \
+    android.hardware.sensors-service.multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor \
     libsensorndkbridge
 
@@ -527,6 +526,10 @@ PRODUCT_PACKAGES += \
 # Shims
 PRODUCT_PACKAGES += \
     libmemset_shim
+
+# Thermal (AIDL, matching FP4)
+PRODUCT_PACKAGES += \
+    android.hardware.thermal-service.qti
 
 # Telephony
 PRODUCT_PACKAGES += \
