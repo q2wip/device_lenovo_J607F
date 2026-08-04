@@ -95,6 +95,9 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Partitions
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_ENABLE_UFFD_GC := true
+PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
+$(call soong_config_set_bool,stagefright,target_disable_thumbnail_block_model,true)
 
 # Permissions
 # Audio
