@@ -70,5 +70,7 @@ debug.renderengine.backend=skiaglthreaded
 debug.hwui.renderer=skiagl
 renderthread.skia.reduceopstasksplitting=true
 
-# USB default configuration for debug build
-persist.sys.usb.config=mtp,adb
+# USB default configuration: "adb" (not "mtp,adb") — the configfs=2
+# usbd chain only starts adbd when persist.sys.usb.config is exactly "adb"
+# (see 61da11b, init.target.rc setprop)
+persist.sys.usb.config=adb

@@ -69,9 +69,7 @@ on late-fs
     exec_start wait_for_keymaster
     mount_all --late
 
-# Debug: copy crash tombstones to /sdcard/ after each boot
 on property:sys.boot_completed=1
-    exec u:r:init:s0 -- /system/bin/sh /vendor/bin/tombstone_copy.sh
     # Cover/hall sensor: default lid_behavior is NONE (A16), closing the
     # keyboard case would do nothing. Sleep on lid close (Lenovo stock behavior).
     exec u:r:init:s0 -- /system/bin/settings put global lid_behavior 1
