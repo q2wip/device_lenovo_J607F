@@ -1639,17 +1639,6 @@
 1661:vendor/etc/sec_config
 1662:vendor/etc/seccomp_policy/qspm.policy
 1663:vendor/etc/seccomp_policy/qti-systemd.policy
-1664:vendor/etc/selinux/plat_pub_versioned.cil
-1665:vendor/etc/selinux/plat_sepolicy_vers.txt
-1666:vendor/etc/selinux/selinux_denial_metadata
-1667:vendor/etc/selinux/vendor_file_contexts
-1668:vendor/etc/selinux/vendor_hwservice_contexts
-1669:vendor/etc/selinux/vendor_mac_permissions.xml
-1670:vendor/etc/selinux/vendor_property_contexts
-1671:vendor/etc/selinux/vendor_seapp_contexts
-1672:vendor/etc/selinux/vendor_sepolicy.cil
-1673:vendor/etc/selinux/vendor_service_contexts
-1674:vendor/etc/selinux/vndservice_contexts
 1675:vendor/etc/sound_trigger_mixer_paths.xml
 1676:vendor/etc/sound_trigger_mixer_paths_cdp.xml
 1677:vendor/etc/sound_trigger_mixer_paths_lagoonmtp.xml
