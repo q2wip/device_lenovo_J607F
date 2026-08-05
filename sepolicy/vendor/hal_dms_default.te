@@ -2,7 +2,7 @@
 # stock QTI policy (hal_dms_default domain). A16 platform/QTI policy no
 # longer defines it; without a domain the service ran as init and could
 # not register with hwservicemanager.
-type hal_dms_default, domain, vendor_domain;
+type hal_dms_default, domain;
 type hal_dms_default_exec, exec_type, vendor_file_type, file_type;
 
 init_daemon_domain(hal_dms_default)
