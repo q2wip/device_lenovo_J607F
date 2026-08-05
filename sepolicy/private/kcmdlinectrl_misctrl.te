@@ -1,0 +1,10 @@
+# A16 AOSP kcmdlinectrl/misctrl (platform coredomain services) read the
+# fstab from the DT config path first; on this device the DT actually
+# contains /firmware/android/fstab so the services go deeper than the
+# platform dontaudit anticipates (it only covers dir search). Denials are
+# intentional per platform design — bootloader_message falls back to
+# ro.boot properties. Extend the dontaudit to quiet the noise.
+dontaudit kcmdlinectrl sysfs_dt_firmware_android:dir { read open search };
+dontaudit kcmdlinectrl sysfs_dt_firmware_android:file { read open getattr };
+dontaudit misctrl sysfs_dt_firmware_android:dir { read open search };
+dontaudit misctrl sysfs_dt_firmware_android:file { read open getattr };
