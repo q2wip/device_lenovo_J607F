@@ -1,0 +1,7 @@
+# AOSP `modprobe` coredomain (platform domain_trans(init, toolbox_exec,
+# modprobe)) loading vendor audio modules from init.qcom.rc
+# (exec -- /system/bin/modprobe -a -d /vendor/lib/modules ...).
+allow modprobe vendor_file:dir { getattr search };
+allow modprobe vendor_file:file r_file_perms;
+allow modprobe vendor_file:system module_load;
+allow modprobe kmsg_device:chr_file w_file_perms;
