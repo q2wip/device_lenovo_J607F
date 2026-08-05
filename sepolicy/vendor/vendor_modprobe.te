@@ -1,0 +1,3 @@
+# init.qcom.rc runs `exec u:r:vendor_modprobe:s0 -- /system/bin/modprobe`
+# (A16 toolbox). A16 platform only grants entrypoint on vendor_toolbox_exec.
+allow vendor_modprobe toolbox_exec:file entrypoint;

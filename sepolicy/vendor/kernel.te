@@ -4,3 +4,8 @@ userdebug_or_eng(`
 ')
 # Ignore the socket if it fails to create
 dontaudit kernel self:qipcrtr_socket create;
+
+# qca_cld3 (built-in) reads /mnt/vendor/persist/wlan_mac.bin from kernel
+# context at init
+allow kernel mnt_vendor_file:dir search;
+allow kernel mnt_vendor_file:file { read open };

@@ -20,3 +20,10 @@ allow hal_camera_default proc_stat:file { open };
 
 allow hal_camera_default public_adsprpcd_file:file r_file_perms;
 allow hal_camera_default vendor_xdsp_device:chr_file r_file_perms;
+
+# A13 camera blob scans all properties at init. Vendor props: allow reads
+# (legal for non-coredomain). Platform system props are neverallowed —
+# leave denied but quiet the boot-time noise (HAL tolerates missing props,
+# no camera hardware on this device).
+allow hal_camera_default vendor_property_type:file { open read getattr map };
+dontaudit hal_camera_default property_type:file { open read getattr map };

@@ -9,3 +9,18 @@ allow init proc_last_kmsg:file {
 };
 
 allow init adsprpcd_file:file mounton;
+
+# Vendor services/binaries started without their own exec label run as
+# init (e.g. A13 blobs); also allow the dms service transition path.
+allow init vendor_file:file { execute execute_no_trans };
+
+# init.target.rc: exec /system/bin/settings put global lid_behavior 1
+# (settings -> cmd symlink; talks to servicemanager/system_server)
+allow init system_file:file execute_no_trans;
+binder_call(init, servicemanager)
+binder_call(init, system_server)
+allow init settings_service:service_manager find;
+
+# Restorecon of first-boot image relabel (unlabeled blobs in system img)
+allow init system_file:dir relabelfrom;
+allow init system_file:file relabelfrom;

@@ -1,0 +1,4 @@
+# e2fsck runs on lenovocust (/dev/block/sda5, ext4 in fstab.default) whose
+# by-name node falls through to generic block_device; A16 fsck domain only
+# allows the standard partition types.
+allow fsck block_device:blk_file rw_file_perms;

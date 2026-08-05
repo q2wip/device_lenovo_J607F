@@ -1,0 +1,5 @@
+# QTI kernel-cmdline control service reads DT firmware nodes
+# (/sys/firmware/devicetree/base/firmware/android/*) — A13 platform rule
+# not carried over to A16.
+allow kcmdlinectrl sysfs_dt_firmware_android:dir r_dir_perms;
+allow kcmdlinectrl sysfs_dt_firmware_android:file r_file_perms;
