@@ -16,6 +16,9 @@ allow hal_dms_default hidl_base_hwservice:hwservice_manager { add find };
 # Audio HAL interface (stock A13 rule)
 binder_call(hal_dms_default, hal_audio_default)
 
+# hwservicemanager legacy-mode detection at startup (system_public_prop)
+get_prop(hal_dms_default, hwservicemanager_prop)
+
 # Load vendor libs (libsqlite.vendor etc.) and dalvik-independent blobs
 allow hal_dms_default vendor_file:file { map execute };
 
