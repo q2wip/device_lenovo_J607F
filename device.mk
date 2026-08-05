@@ -308,9 +308,12 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@4.0.vendor \
     vendor.qti.hardware.display.mapperextensions@1.1.vendor
 
-# DRM (AIDL clearkey, matching FP4; widevine stays HIDL vendor blob)
+# DRM (AIDL clearkey + libcrypto_shim for the widevine blob's CBS_init,
+# matching gauguin)
 PRODUCT_PACKAGES += \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm-service.clearkey \
+    libcrypto_shim \
+    libcrypto_shim.vendor
 
 # Fastbootd
 PRODUCT_PACKAGES += \
