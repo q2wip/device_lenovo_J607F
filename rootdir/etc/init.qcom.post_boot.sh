@@ -837,7 +837,7 @@ function configure_zram_parameters() {
         let zRamSizeMB=4096
     fi
 
-    if [ "$low_ram" == "true" ]; then
+    if [ -e /sys/block/zram0/comp_algorithm ]; then
         echo lz4 > /sys/block/zram0/comp_algorithm
     fi
 
@@ -942,9 +942,10 @@ function configure_memory_parameters() {
     #
 
 ProductName=`getprop ro.product.name`
+ProductBoard=`getprop ro.product.board`
 low_ram=`getprop ro.config.low_ram`
 
-if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$ProductName" == "sdmshrike_au" ]; then
+if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$ProductName" == "sdmshrike_au" ] || [ "$ProductBoard" == "lito" ]; then
       # Enable ZRAM
       configure_zram_parameters
       configure_read_ahead_kb_values
