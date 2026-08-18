@@ -66,11 +66,12 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 TARGET_KERNEL_ADDITIONAL_FLAGS := KCFLAGS="-Wno-error=strict-prototypes"
 
-# Use system DTC 1.7.2 instead of AOSP-built DTC 1.7.0 which corrupts
+# Use the kernel's own bundled DTC (mainline 1.7.0, built into KERNEL_OBJ by
+# scripts/dtc/Makefile) instead of AOSP-built DTC 1.7.0 which corrupts
 # cell/byte-array property values (e.g. <3296000 3296000> → 6 bytes).
 # Passed as 'DTC=' (command-line) so it overrides Makefile.lib's
 # 'DTC = $(DTC_EXT)' (file-level assignment).
-TARGET_KERNEL_ADDITIONAL_FLAGS += DTC=/usr/bin/dtc
+TARGET_KERNEL_ADDITIONAL_FLAGS += DTC=$(abspath $(PRODUCT_OUT)/obj/KERNEL_OBJ/scripts/dtc/dtc)
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/lenovo/J607Z
