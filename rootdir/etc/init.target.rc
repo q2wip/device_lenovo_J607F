@@ -73,6 +73,27 @@ on property:sys.boot_completed=1
     # Cover/hall sensor: default lid_behavior is NONE (A16), closing the
     # keyboard case would do nothing. Sleep on lid close (Lenovo stock behavior).
     exec u:r:init:s0 -- /system/bin/settings put global lid_behavior 1
+    # Audio-stutter mitigation (verified live): post_boot.sh intends these
+    # on lito but they are not in effect after boot (big cluster idles at
+    # 652MHz while silver cores saturate, sched_load_boost partially reset).
+    # Raising schedtune boost moves render/decode load onto the big A76
+    # cluster (CPU PSI some avg10 16 -> 9), re-applying after perf-hal.
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/top-app/schedtune.prefer_idle 1
+    write /dev/stune/foreground/schedtune.boost 5
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+    write /sys/devices/system/cpu/cpu0/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu1/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu2/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu3/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu4/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu5/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu6/sched_load_boost -6
+    write /sys/devices/system/cpu/cpu7/sched_load_boost -6
+    write /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq 1113600
+    # Proactive reclaim headroom: keep MemAvailable higher to avoid
+    # swap-in stalls during playback (pgscan_kswapd was ~3.2M pages).
+    write /proc/sys/vm/watermark_boost_factor 150
 
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
