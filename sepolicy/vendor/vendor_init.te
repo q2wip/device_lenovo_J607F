@@ -8,6 +8,11 @@ allow vendor_init {
   proc
 }:file w_file_perms;
 
+# vm.watermark_boost_factor set from init.target.rc (proactive reclaim
+# headroom during video playback; vendor_init is denied the dedicated
+# proc_watermark_boost_factor type otherwise)
+allow vendor_init proc_watermark_boost_factor:file w_file_perms;
+
 allow vendor_init block_device:lnk_file setattr;
 allow vendor_init vendor_camera_prop:property_service set;
 
